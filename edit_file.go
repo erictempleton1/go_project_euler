@@ -6,16 +6,16 @@ import (
     "log"
 )
 
-func dirReader(dir string) string {
+func dirReader(dir string) []string {
     files, err := ioutil.ReadDir(dir)
     if err != nil {
         log.Fatal(err)
     }
-    dirElements := make(map[string]int64)
+    var s []string
     for _, file := range files {
-        dirElements[file.Name()] = file.Size()
+        s = append(s, file.Name())
     }
-    return dirElements
+    return s
 }
 
 func main() {
